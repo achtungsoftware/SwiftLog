@@ -21,7 +21,7 @@ public class SwiftLog {
     }
     
     private static func lineBuilder(_ message: String) -> String {
-        return "\(Date.now) \(message)"
+        return "\(Date()) \(message)"
     }
 }
 
