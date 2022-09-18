@@ -1,6 +1,13 @@
 import Foundation
 
 public class SwiftLog {
+    
+    
+    /// Adds a log to the given ``Location`` and ``LogType``
+    /// - Parameters:
+    ///   - message: The log message as `String`
+    ///   - location: The ``Location`` where the log file should be saved
+    ///   - logType: The ``LogType``
     public static func log(message: String, location: Location = .currentDirectory, logType: LogType = .info) {
         do {
             try lineBuilder(message).appendLine(to: location.url(filename: typeFilename(logType: logType)))
@@ -9,7 +16,7 @@ public class SwiftLog {
         }
     }
     
-    private static func typeFilename(logType: LogType) -> String {
+    public static func typeFilename(logType: LogType) -> String {
         switch logType {
         case .info:
             return "info.log"
@@ -20,7 +27,7 @@ public class SwiftLog {
         }
     }
     
-    private static func lineBuilder(_ message: String) -> String {
+    public static func lineBuilder(_ message: String) -> String {
         return "\(Date()) \(message)"
     }
 }
